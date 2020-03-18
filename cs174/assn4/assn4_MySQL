@@ -1,0 +1,17 @@
+CREATE DATABASE video_data;
+
+USE video_data;
+
+CREATE TABLE videos (
+	id INT UNSIGNED NOT NULL,
+	timestamp DATETIME,
+	video VARCHAR(255),
+	thumbnail VARCHAR(255),
+	hash BINARY(32)
+);
+
+CREATE TABLE captures (
+	image VARCHAR(255),
+	timestamp TIMESTAMP,
+	hash BINARY(32)
+);
