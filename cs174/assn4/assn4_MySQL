@@ -3,15 +3,15 @@ CREATE DATABASE video_data;
 USE video_data;
 
 CREATE TABLE videos (
-	id INT UNSIGNED NOT NULL,
+	id VARCHAR(255),
 	timestamp DATETIME,
-	video VARCHAR(255),
-	thumbnail VARCHAR(255),
-	hash BINARY(32)
+	video VARCHAR(4096) NOT NULL,
+	thumbnail VARCHAR(4096),
+	hash BINARY(32) NOT NULL
 );
 
 CREATE TABLE captures (
-	image VARCHAR(255),
+	image VARCHAR(4096) NOT NULL,
 	timestamp TIMESTAMP,
-	hash BINARY(32)
+	hash BINARY(32) NOT NULL
 );
