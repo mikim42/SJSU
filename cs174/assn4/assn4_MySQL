@@ -1,3 +1,6 @@
+# CS174 - Assignment 4
+# Mingyun Kim
+
 CREATE DATABASE video_data;
 
 USE video_data;
