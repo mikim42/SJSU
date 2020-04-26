@@ -23,7 +23,7 @@ define('ERR_DB', '<h1>Error: Database access has failed</h1>');
 define('ERR_AUTH', '<h1>Error: User authentication failed</h1>');
 define('ERR_INPUT', '<h1>Error: Empty or Invalid Input Submitted</h1>');
 
-define('MSG_SIGNUP', '<h2>User Sign Up Complete. Please Sign In!</h2>');
+define('MSG_SIGNUP', '<h2>User sign up has been completed. Please sign in!</h2>');
 define('MSG_INFEC', '<h2>The file is infected</h2>');
 define('MSG_NOINFEC', '<h2>The file is not infected by any known malware</h2>');
 define('MSG_UPLOAD', '<h3>Malware upload has been completed</h3>');
@@ -56,7 +56,7 @@ if (!$result) die(to_main(ERR_DB));
 $result->close();
 
 $query = "CREATE TABLE malwares (
-	id INT NOT NULL UNIQUE AUTO_INCREMENT,
+	id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT,
 	malware VARCHAR(64) NOT NULL,
 	signature CHAR(40) NOT NULL
 )";
@@ -68,7 +68,7 @@ if (!$result) die(to_main(ERR_DB));
 $result->close();
 
 $query = "CREATE TABLE requests (
-	id INT NOT NULL UNIQUE AUTO_INCREMENT,
+	id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT,
 	malware VARCHAR(64) NOT NULL,
 	signature CHAR(40) NOT NULL
 )";
@@ -190,7 +190,7 @@ function check_mw($conn, $fname) {
 		$result->data_seek($j);
 		$row = $result->fetch_array(MYSQLI_NUM);
 		if (($needle = strstr($content, $row[2])))
-			return MSG_INFEC."<h3>Malware: $row[0]</h3>";
+			return MSG_INFEC."<h3>Malware: $row[1]</h3>";
 	}
 	return MSG_NOINFEC;
 }

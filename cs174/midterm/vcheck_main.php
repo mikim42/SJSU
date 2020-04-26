@@ -39,7 +39,7 @@ if ($_FILES) {
 
 if (isset($_POST['logout'])) die(to_main("Successfully Signed Out<br>"));
 if (isset($_POST['login'])) login_user($conn);
-if (isset($_POST['reg'])) register_user($conn);
+if (isset($_POST['reg'])) $done = register_user($conn);
 
 
 /*	Malware Handler
