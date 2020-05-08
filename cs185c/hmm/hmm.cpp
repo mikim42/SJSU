@@ -30,7 +30,7 @@ double	alpha_pass(void) {
 		for (int i = 0; i < N; i++) {
 			double	sum = 0;
 			for (int j = 0; j < N; j++)
-				sum += alpha[t - 1][j] * alpha[j][i];
+				sum += alpha[t - 1][j] * A[j][i];
 			alpha[t][i] = B[i][O[t]] * sum;
 		}
 	}
