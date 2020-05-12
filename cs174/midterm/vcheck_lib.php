@@ -218,21 +218,26 @@ function request_mw($conn, $fname, $mw) {
 }
 
 function delete_mw($conn) {
-	$query = "DELETE FROM malwares WHERE id=$_POST[deletemw]";
+	$id = mysql_entities_fix_string($conn, $_POST{'deletemw']);
+	$query = "DELETE FROM malwares WHERE id=$id";
 	if (!($result = $conn->query($query))) die(to_main(ERR_DB));
 	return MSG_DELETE;
 }
 
 function accept_mw($conn) {
-	$query = "INSERT INTO malwares(malware, signature) VALUES('$_POST[acceptmw]', '$_POST[acceptsig]')";
+	$mw = mysql_entities_fix_string($conn, $_POST{'acceptmw']);
+	$sig = mysql_entities_fix_string($conn, $_POST{'acceptsig']);
+	$req = mysql_entities_fix_string($conn, $_POST{'acceptreq']);
+	$query = "INSERT INTO malwares(malware, signature) VALUES('$mw', '$sig')";
 	if (!($result = $conn->query($query))) die(to_main(ERR_DB));
-	$query = "DELETE FROM requests WHERE id=$_POST[acceptreq]";
+	$query = "DELETE FROM requests WHERE id=$req";
 	if (!($result = $conn->query($query))) die(to_main(ERR_DB));
 	return MSG_ACCEPT;
 }
 
 function reject_mw($conn) {
-	$query = "DELETE FROM requests WHERE id=$_POST[rejectreq]";
+	$req = mysql_entities_fix_string($conn, $_POST['rejectreq']);
+	$query = "DELETE FROM requests WHERE id=$req";
 	if (!($result = $conn->query($query))) die(to_main(ERR_DB));
 	return MSG_REJECT;
 }

@@ -15,7 +15,7 @@ $done = "";
  */
 
 if ($_FILES) {
-	$fname = $_FILES['filename']['name'];
+	$fname = mysql_entities_fix_string($conn, $_FILES['filename']['name']);
 	move_uploaded_file($_FILES['filename']['tmp_name'], $fname);
 	if (!file_exists($fname)) die(to_main(ERR_INPUT));
 	if (isset($_POST['check']))
