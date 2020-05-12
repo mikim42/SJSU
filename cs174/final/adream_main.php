@@ -1,7 +1,7 @@
 <?PHP
 /*	CS174 - Final: Ari's Dream
  *	Mingyun Kim
- *	Zihui Chen:w
+ *	Zihui Chen
  */
 
 require_once 'adream_lib.php';
